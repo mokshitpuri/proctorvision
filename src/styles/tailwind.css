@@ -1,0 +1,315 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  /* Color Palette */
+  --color-background: #ffffff;
+  --color-surface: #ffffff;
+  --color-muted: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #64748b;
+  --color-primary: #3b82f6;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-accent: #8b5cf6;
+
+  /* Responsive Breakpoints */
+  --breakpoint-xs: 475px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 475px) {
+  .xs:hidden {
+    display: none;
+  }
+  
+  .xs:block {
+    display: block;
+  }
+  
+  .xs:inline {
+    display: inline;
+  }
+  
+  .xs:flex {
+    display: flex;
+  }
+}
+
+/* Mobile-first typography scaling */
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Enhanced Touch Targets for Mobile */
+@media (max-width: 768px) {
+  button, 
+  [role="button"], 
+  input[type="button"], 
+  input[type="submit"], 
+  .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Larger tap targets for icons */
+  .icon-button {
+    padding: 12px;
+  }
+}
+
+/* Improved focus states for accessibility */
+*:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Enhanced animations */
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Improved scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-muted);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* Enhanced mobile video controls */
+@media (max-width: 768px) {
+  video::-webkit-media-controls {
+    display: none !important;
+  }
+  
+  video::-webkit-media-controls-enclosure {
+    display: none !important;
+  }
+}
+
+/* Improved table responsiveness */
+@media (max-width: 1024px) {
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .table-container::-webkit-scrollbar {
+    height: 4px;
+  }
+}
+
+/* Enhanced card hover effects */
+.card-hover {
+  transition: all 0.2s ease-in-out;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -8px rgba(0, 0, 0, 0.1);
+}
+
+/* Improved loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, 
+    var(--color-muted) 25%, 
+    var(--color-surface) 50%, 
+    var(--color-muted) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Enhanced status indicators */
+.status-indicator {
+  position: relative;
+}
+
+.status-indicator::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--color-surface);
+}
+
+.status-indicator.online::after {
+  background-color: var(--color-success);
+}
+
+.status-indicator.recording::after {
+  background-color: var(--color-error);
+  animation: pulse-subtle 1s infinite;
+}
+
+.status-indicator.paused::after {
+  background-color: var(--color-warning);
+}
+
+/* Improved mobile navigation */
+@media (max-width: 768px) {
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    padding: 8px 16px;
+    z-index: 50;
+  }
+  
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  
+  .mobile-nav-item.active {
+    color: var(--color-primary);
+    background: var(--color-primary);
+    background: rgba(59, 130, 246, 0.1);
+  }
+}
+
+/* Enhanced form controls */
+input, select, textarea {
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Improved modal responsiveness */
+@media (max-width: 768px) {
+  .modal-container {
+    margin: 16px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+  }
+  
+  .modal-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    background: var(--color-surface);
+    z-index: 10;
+  }
+  
+  .modal-body {
+    padding: 16px;
+  }
+  
+  .modal-footer {
+    padding: 16px;
+    border-top: 1px solid var(--color-border);
+    position: sticky;
+    bottom: 0;
+    background: var(--color-surface);
+    z-index: 10;
+  }
+}
+
+/* Enhanced print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break {
+    page-break-after: always;
+  }
+  
+  .print-avoid-break {
+    page-break-inside: avoid;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *, 
+  *::before, 
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: #000000;
+    --color-text-primary: #000000;
+    --color-text-secondary: #333333;
+  }
+}
+
+/* Dark mode foundation (for future implementation) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #0f172a;
+    --color-surface: #1e293b;
+    --color-muted: #334155;
+    --color-border: #475569;
+    --color-text-primary: #f1f5f9;
+    --color-text-secondary: #cbd5e1;
+  }
+}
